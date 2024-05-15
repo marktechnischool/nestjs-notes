@@ -5,7 +5,7 @@ import { Note } from 'src/schemas/note.schema';
 
 @Injectable()
 export class NotesService {
-  constructor(@InjectModel(Note.name) private noteModel: Model<Note>) { }
+  constructor(@InjectModel(Note.name) private noteModel: Model<Note>) {}
 
   async create(text: string): Promise<Note> {
     const createdNote = new this.noteModel({ text });

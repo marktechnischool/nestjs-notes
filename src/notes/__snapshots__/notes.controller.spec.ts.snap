@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotesController findAll should return an array with one note 1`] = `
+[
+  {
+    "text": "test",
+  },
+  {
+    "text": "test 2",
+  },
+]
+`;
