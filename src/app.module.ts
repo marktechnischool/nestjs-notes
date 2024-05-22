@@ -5,10 +5,14 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { NotesController } from './notes/notes.controller';
 import { NotesModule } from './notes/notes.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -17,6 +21,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
     }),
     NotesModule,
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController, NotesController],
   providers: [AppService],
